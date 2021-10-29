@@ -1,9 +1,8 @@
 ## UNCC Project Assignment Fall 2021 <br> Campus Eats Rating System
 
-## Introduction
-
 
 ## Team Members
+
 Raju Challagundla
 
 Yuehan Lan
@@ -11,6 +10,11 @@ Yuehan Lan
 Sumanta Bhattacharyya
 
 Zihui Wang
+
+## Project Introduction
+
+
+
 
 
 
