@@ -1,4 +1,4 @@
-## UNCC Project Assignment Fall 2021 <br> Campus Eats Rating System
+## Campus Eats (Fall-2021)
 
 
 ## Team Members
