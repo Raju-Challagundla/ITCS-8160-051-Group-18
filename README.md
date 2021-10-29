@@ -21,7 +21,7 @@ Students love food delivery services on campus.  Campuses do not like the steady
 
 ## Business Rules
 1. Persons who are approved can only be the drivers.
-2. Only students may be drivers.
+2. Only students or authrorzied employees may be drivers.
 3. Food can only be delivered to the approved locations 
 4. There is a flat fee of $5 for each delivery.
 5. Include approved Food providers or restaurants
