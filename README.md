@@ -1,5 +1,5 @@
 ## Campus Eats (Fall-2021)
-
+This project adds a rating system to the Campus Eats database. The rating system allows customers of Campus Eats to rate both drivers and restaurants.
 
 ## Team Members
 
