@@ -30,6 +30,7 @@ Students love food delivery services on campus.  Campuses do not like the steady
 8. A customer can rate the foold only one time per order
 9. A customer can rate the delivery only one time per order
 10. Rating scale is between 1 to 5.
+11. Administrators can view driver ratings and restaurant ratings on the WebUI.
 
 ## EERD
 
