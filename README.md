@@ -63,7 +63,7 @@ SELECT @total;
 Screenshot of successful Call and execution, showing results.
 
 
-###### 2) Name of Stored Procedure: sum_total_by_restaurant
+**2) Name of Stored Procedure:** ###### sum_total_by_restaurant
 Purpose:  To get Sum of total purchase by restaurant.
 Code:
 DROP PROCEDURE IF EXISTS sum_total_by_restaurant;
