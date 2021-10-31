@@ -39,17 +39,23 @@ Students love food delivery services on campus.  Campuses do not like the steady
 
 [Click me to Data Dictionary page](https://github.com/Raju-Challagundla/ITCS-8160-051-Group-18/blob/main/Data%20Dictionary.xlsx)
 
-## Sample stored procedures
+## Sample Stored procedures
 ###### 1) Name of Stored Procedure: no_of_orders_delivered_by_driver
-Purpose: To get total orders delivered per driver.
-Code:
+
+**Purpose**: To get total orders delivered per driver.
+
+**Code**:
 -- Get total orders delivered per driver.
+
 DROP PROCEDURE IF EXISTS no_of_orders_delivered_by_driver;
+
 DELIMITER //
+
 CREATE PROCEDURE no_of_orders_delivered_by_driver(IN driver_id INT, OUT total INT)
+
 BEGIN
 	SELECT count(*) INTO total FROM driver dr, delivery de 
-WHERE dr.driver_id = de.driver_id AND dr.driver_id = driver_id AND de.delivery_time IS NOT NULL;
+	WHERE dr.driver_id = de.driver_id AND dr.driver_id = driver_id AND de.delivery_time IS NOT NULL;
 END //
 DELIMITER ;
 CALL no_of_orders_delivered_by_driver(2,@total);
