@@ -17,6 +17,7 @@ With the threat of the Corona virus, food delivery services are more important t
 
 Students love food delivery services on campus.  Campuses do not like the steady stream of visitors that may or  may not have a formal connection with the university.  Companies such as UberEats and GrubHub are happy to deliver on campus, but many schools are wondering if they should take control of the delivery and ensure that students and authorized university employees are the only ones delivering food on campus for safety and health reasons.
 
+We study the data and food delivery service website/app to enhancing the database.
 
 
 ## Business Rules
@@ -31,6 +32,7 @@ Students love food delivery services on campus.  Campuses do not like the steady
 9. A customer can rate the delivery only one time per order
 10. Rating scale is between 1 to 5.
 11. Administrators can will have access over all the data through the WebUI.
+12. A restaurant can have many menu items. Each menu item only offered from one restaurant.
 
 ## EERD
 [Click me to EERD page](https://github.com/Raju-Challagundla/ITCS-8160-051-Group-18/blob/main/project_demo.drawio.png)
