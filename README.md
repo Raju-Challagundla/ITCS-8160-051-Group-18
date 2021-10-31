@@ -38,3 +38,43 @@ Students love food delivery services on campus.  Campuses do not like the steady
 ## Data Dictionary
 
 [Click me to Data Dictionary page](https://github.com/Raju-Challagundla/ITCS-8160-051-Group-18/blob/main/Data%20Dictionary.xlsx)
+
+## Sample stored procedures
+# Name of Stored Procedure: no_of_orders_delivered_by_driver
+Purpose: To get total orders delivered per driver.
+Code:
+-- Get total orders delivered per driver.
+DROP PROCEDURE IF EXISTS no_of_orders_delivered_by_driver;
+DELIMITER //
+CREATE PROCEDURE no_of_orders_delivered_by_driver(IN driver_id INT, OUT total INT)
+BEGIN
+	SELECT count(*) INTO total FROM driver dr, delivery de 
+WHERE dr.driver_id = de.driver_id AND dr.driver_id = driver_id AND de.delivery_time IS NOT NULL;
+END //
+DELIMITER ;
+CALL no_of_orders_delivered_by_driver(2,@total);
+SELECT @total;
+Screenshot of successful Call and execution, showing results.
+
+
+Name of Stored Procedure: sum_total_by_restaurant
+Purpose:  To get Sum of total purchase by restaurant.
+Code:
+DROP PROCEDURE IF EXISTS sum_total_by_restaurant;
+DELIMITER //
+CREATE PROCEDURE sum_total_by_restaurant( IN res_id INT, OUT sumtotal FLOAT)
+BEGIN
+	SELECT SUM(total_price) INTO sumtotal 
+    FROM Campus_Eats_Fall2021.order ord where ord.restaurant_id = res_id;
+ 
+END //
+ 
+DELIMITER ;
+ 
+CALL sum_total_by_restaurant(5, @sumtotal);
+SELECT ROUND(@sumtotal,2);
+ 
+
+
+ 
+
