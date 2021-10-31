@@ -46,8 +46,6 @@ Students love food delivery services on campus.  Campuses do not like the steady
 
 ###### Code:
 
--- Get total orders delivered per driver.
-
 DROP PROCEDURE IF EXISTS no_of_orders_delivered_by_driver;
 
 DELIMITER //
@@ -55,6 +53,7 @@ DELIMITER //
 CREATE PROCEDURE no_of_orders_delivered_by_driver(IN driver_id INT, OUT total INT)
 
 BEGIN
+	
 	SELECT count(*) INTO total 
 	
 	FROM driver dr, delivery de 
@@ -70,19 +69,32 @@ CALL no_of_orders_delivered_by_driver(2,@total);
 SELECT @total;
 
 
-**2) Name of Stored Procedure:** ###### sum_total_by_restaurant
-Purpose:  To get Sum of total purchase by restaurant.
-Code:
+**2) Name of Stored Procedure: sum_total_by_restaurant**
+
+###### Purpose:  To get Sum of total purchase by restaurant.
+
+###### Code:
+
 DROP PROCEDURE IF EXISTS sum_total_by_restaurant;
+
 DELIMITER //
+
 CREATE PROCEDURE sum_total_by_restaurant( IN res_id INT, OUT sumtotal FLOAT)
+
 BEGIN
+	
 	SELECT SUM(total_price) INTO sumtotal 
-    FROM Campus_Eats_Fall2021.order ord where ord.restaurant_id = res_id;
+	
+    	FROM Campus_Eats_Fall2021.order ord where ord.restaurant_id = res_id;
  
 END //
  
 DELIMITER ;
+
+CALL sum_total_by_restaurant(5, @sumtotal);
+
+SELECT ROUND(@sumtotal,2);
+
  
 CALL sum_total_by_restaurant(5, @sumtotal);
 SELECT ROUND(@sumtotal,2);
