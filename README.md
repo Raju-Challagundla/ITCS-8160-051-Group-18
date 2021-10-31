@@ -40,7 +40,7 @@ Students love food delivery services on campus.  Campuses do not like the steady
 [Click me to Data Dictionary page](https://github.com/Raju-Challagundla/ITCS-8160-051-Group-18/blob/main/Data%20Dictionary.xlsx)
 
 ## Sample stored procedures
-# Name of Stored Procedure: no_of_orders_delivered_by_driver
+###### 1) Name of Stored Procedure: no_of_orders_delivered_by_driver
 Purpose: To get total orders delivered per driver.
 Code:
 -- Get total orders delivered per driver.
@@ -57,7 +57,7 @@ SELECT @total;
 Screenshot of successful Call and execution, showing results.
 
 
-Name of Stored Procedure: sum_total_by_restaurant
+###### 2) Name of Stored Procedure: sum_total_by_restaurant
 Purpose:  To get Sum of total purchase by restaurant.
 Code:
 DROP PROCEDURE IF EXISTS sum_total_by_restaurant;
