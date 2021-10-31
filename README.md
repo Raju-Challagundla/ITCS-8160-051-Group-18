@@ -37,4 +37,4 @@ Students love food delivery services on campus.  Campuses do not like the steady
 
 ## Data Dictionary
 
-
+[Click me to Data Dictionary page](https://github.com/Raju-Challagundla/ITCS-8160-051-Group-18/blob/main/Data%20Dictionary.xlsx)
