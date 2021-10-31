@@ -37,7 +37,11 @@ Students love food delivery services on campus.  Campuses do not like the steady
 
 ## Data Dictionary
 
-[Click me to Data Dictionary page](https://github.com/Raju-Challagundla/ITCS-8160-051-Group-18/blob/main/Data%20Dictionary.xlsx)
+
+				
+
+![image](https://user-images.githubusercontent.com/89530932/139565106-7f70b71a-706b-4087-9be1-dc5ff38e4873.png)
+
 
 ## Sample Stored procedures
 **1) Name of Stored Procedure: no_of_orders_delivered_by_driver**
