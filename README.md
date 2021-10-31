@@ -33,7 +33,7 @@ Students love food delivery services on campus.  Campuses do not like the steady
 11. Administrators can will have access over all the data through the WebUI.
 
 ## EERD
-[GitHub Pages](https://pages.github.com/)
+[Click me to EERD page](https://github.com/Raju-Challagundla/ITCS-8160-051-Group-18/blob/main/project_demo.drawio.png)
 
 ## Data Dictionary
 
