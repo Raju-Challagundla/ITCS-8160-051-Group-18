@@ -96,9 +96,6 @@ CALL sum_total_by_restaurant(5, @sumtotal);
 SELECT ROUND(@sumtotal,2);
 
  
-CALL sum_total_by_restaurant(5, @sumtotal);
-SELECT ROUND(@sumtotal,2);
- 
 
 
  
