@@ -44,11 +44,10 @@ Students love food delivery services on campus.  Campuses do not like the steady
 
 
 ## Sample Stored procedures
-**1) Name of Stored Procedure: no_of_orders_delivered_by_driver**
 
-###### Purpose: To get total orders delivered per driver.
-
-###### Code:
+  
+1) To get total orders delivered per driver. 
+<pre>
 
 DROP PROCEDURE IF EXISTS no_of_orders_delivered_by_driver;
 
@@ -72,12 +71,11 @@ CALL no_of_orders_delivered_by_driver(2,@total);
 
 SELECT @total;
 
+   </pre>
 
-**2) Name of Stored Procedure: sum_total_by_restaurant**
+2)  To get Sum of total purchase by restaurant. 
 
-###### Purpose:  To get Sum of total purchase by restaurant.
-
-###### Code:
+<pre>
 
 DROP PROCEDURE IF EXISTS sum_total_by_restaurant;
 
@@ -98,6 +96,7 @@ DELIMITER ;
 CALL sum_total_by_restaurant(5, @sumtotal);
 
 SELECT ROUND(@sumtotal,2);
+</pre>
 
  
 
