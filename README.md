@@ -83,9 +83,9 @@ CREATE PROCEDURE sum_total_by_restaurant( IN res_id INT, OUT sumtotal FLOAT)
 
 BEGIN
 	
-	SELECT SUM(total_price) INTO sumtotal 
+	SELECT SUM(total_price) INTO sumtotal
 	
-    	FROM Campus_Eats_Fall2021.order ord where ord.restaurant_id = res_id;
+	FROM Campus_Eats_Fall2021.order ord where ord.restaurant_id = res_id;
  
 END //
  
