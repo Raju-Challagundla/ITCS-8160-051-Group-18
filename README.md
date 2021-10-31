@@ -46,7 +46,7 @@ Students love food delivery services on campus.  Campuses do not like the steady
 ## Sample Stored procedures
 
   
-1) To get total orders delivered per driver. 
+**1) To get total orders delivered per driver.** 
 <pre>
 
 DROP PROCEDURE IF EXISTS no_of_orders_delivered_by_driver;
@@ -73,7 +73,7 @@ SELECT @total;
 
    </pre>
 
-2)  To get Sum of total purchase by restaurant. 
+**2)  To get Sum of total purchase by restaurant.**
 
 <pre>
 
