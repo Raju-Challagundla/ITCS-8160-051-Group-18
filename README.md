@@ -100,7 +100,9 @@ CALL sum_total_by_restaurant(5, @sumtotal);
 SELECT ROUND(@sumtotal,2);
 </pre>
 
- 
+ ## MySQL Database Dump
+
+[Complete Database Dump](sql/CampusEats_Dump20211128.sql)
 
 
  
