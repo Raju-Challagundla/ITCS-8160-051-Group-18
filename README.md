@@ -35,7 +35,7 @@ We study the data and food delivery service website/app to enhancing the databas
 12. A restaurant can have many menu items. Each menu item only offered from one restaurant.
 
 ## EERD
-[Click me to EERD page](docs/Final_EERD.pdf)
+[Click me to EERD page](docs/CampusEats_EERD.pdf)
 
 ## Data Dictionary
 
