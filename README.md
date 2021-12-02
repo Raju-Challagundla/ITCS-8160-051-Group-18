@@ -50,13 +50,13 @@ We study the data and food delivery service website/app to enhancing the databas
 
 ## Data Dictionary
 
-
 				
-
 ![image](https://user-images.githubusercontent.com/89530932/139565106-7f70b71a-706b-4087-9be1-dc5ff38e4873.png)
 
 
-## Sample Stored procedures
+## Stored procedures
+
+Database users who retrieve updated records daily or repeatedly throughout the week/month use stored procedures to simplify this task. Stored procedures are SQL code that is saved to a file and accessed via a call procedure. To execute the query, a user calls the procedure and specifies a parameter that the underlying SQL query then executes. Thereby, stored procedures allow users to save time and increase efficiency by eliminating the need to re-write SQL code.
 
   
 **1) To get total orders delivered per driver.** 
@@ -110,6 +110,7 @@ CALL sum_total_by_restaurant(5, @sumtotal);
 
 SELECT ROUND(@sumtotal,2);
 </pre>
+## Indexes and indexing: speed up search run time
 
 ## Springboot Web/App Implementation
 
