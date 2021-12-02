@@ -34,6 +34,17 @@ We study the data and food delivery service website/app to enhancing the databas
 11. Administrators can will have access over all the data through the WebUI.
 12. A restaurant can have many menu items. Each menu item only offered from one restaurant.
 
+## Architecture / Use Case for Rating System
+
+1. Customers provide ratings after delivery of an order.
+2. Customers may provide ratings / comments / upload a photo of a driver
+3. Customers may provide ratings / comments / upload a photo of a restaurant
+4. Customers may provide ratings / comments / upload a photo of a food item
+5. Customers may search for ratings on a particular restaurant.
+6. Administrators of the system can view driver ratings, Item ratings and restaurant ratings.
+
+![image](docs/CampusEats_Architecture.png)
+
 ## EERD
 [Click me to EERD page](docs/CampusEats_EERD.pdf)
 
