@@ -112,7 +112,33 @@ SELECT ROUND(@sumtotal,2);
 </pre>
 
 ## Springboot Web/App Implementation
-TBA
+
+The web application is built using Springboot-2.5.6 which also uses thymeleaf as html template engine and authentication is handled through spring web security. You can download [source code and instructions to setup from here](https://github.com/Raju-Challagundla/CampusEats-Backoffice).
+
+This web application allows an administrative user to manage entries in the different (Refer to above architecture Diagram) tables of the database. Appication uses below tables to authenticate the administrative user
+- Person (col: person_email)
+- Staff (col: is_admin = Y)
+- Admin (col: encrypted password)
+
+And once authentication is successful then a session gets started which ensures the protection of the urls that is used within the application until logout happens; only authorized users can access the application's Create-Read-Update-Delete (CRUD) functionality.
+
+An authenticated administrator has the ability to view 
+- Orders
+- Deliveries
+- Students / Drivers
+- Restaurants
+- Food Items
+- Vehicles
+- Ratinng of Drivers / Restaurants / Food Items.
+	
+An authenticated administrator has the ability to add new, update , delete existing 
+- Students / Drivers
+- Restaurants
+- Food Items
+- Vehicles
+
+New users (who will have administrative privileges) can only be added by a previously authenticated user. Once added, new user will be able to login as administrator and be able to to perform the the previleged functionalities.
+
 
 #### Screenshots of the CampusEats Backoffice (CRUD)
 
