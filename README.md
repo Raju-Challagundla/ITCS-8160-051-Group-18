@@ -144,11 +144,27 @@ New users (who will have administrative privileges) can only be added by a previ
 
 [Login](screenshots/1-Login-Admin.png) | [Home](screenshots/2-Home.png) | [Add Adminstrator](screenshots/3-AddAdmin.png) | [Retrieve Students](screenshots/4-ListStudents.png) | [Add Student](screenshots/6-AddStudent.png) | [Update Student](screenshots/7-UpdateStudent.png) | [Retrieve Restaurants](screenshots/8-ListRestaurants.png) | [Add Restaurant](screenshots/9-AddRestaurant.png) | [Update Restaurant](screenshots/10-UpdateRestaurant.png) | [Retrieve Orders](screenshots/11-ListOrders.png) | [Retrieve Deliveries](screenshots/12-ListDeliveries.png) | [Manage Delivery](screenshots/13-ManageDelivery.png) | [Retrieve Food Items](screenshots/14-ListFoodItems.png) | [Add Food Item](screenshots/15-AddFoodItem.png) | [AddFoodItemsByRestaurants](screenshots/16-AddFoodItemsByRestaurants.png) | [Update Food Item](screenshots/17-UpdateFoodItem.png) | [Retrieve Vehicles](screenshots/18-Listvehicles.png) | [Add Vehicle](screenshots/19-AddVehicle.png) | [Update Vehicle](screenshots/20-UpdateVehicle.png)
 
+#### Description of Future Work
+TBA
 
 ## MySQL Database Dump
 
 [Complete Database Dump](sql/CampusEatsDump_20211130.sql)
 
-
+#### Screenshots of Populated Database Tables:
+[ratings table](screenshots/ratings.png) |
+[order table](screenshots/order.png) |
+[delivery table](screenshots/delivery.png) |
+[driver table](screenshots/driver.png) |
+[faculty table](screenshots/faculty.png) |
+[location table](screenshots/location.png) |
+[person table](screenshots/person.png) |
+[restaurant table](screenshots/restaurant.png) |
+[staff table](screenshots/staff.png) |
+[student table](screenshots/student.png) |
+[vehicle table](screenshots/vehicle.png) |
+[users table for CRUD admin interface](screenshots/users.png)
  
+## PPT or Video
+TBA
 
