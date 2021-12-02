@@ -168,6 +168,6 @@ TBA
 [users table for CRUD admin interface](screenshots/users.png)
  
 ## PPT or Video
-TBA
-[Watch](https://drive.google.com/file/d/1WFpg5wHiJIFeC-CWg3tntDvHGEhr9yeH/view)
+
+[Summary video](https://drive.google.com/file/d/1WFpg5wHiJIFeC-CWg3tntDvHGEhr9yeH/view)
 
