@@ -111,7 +111,17 @@ CALL sum_total_by_restaurant(5, @sumtotal);
 SELECT ROUND(@sumtotal,2);
 </pre>
 ## Indexes and indexing: speed up search run time
-TBA
+Because the primary key and foreign key already have index, we only need add index to the data which needs to search frequent and special, and not search by id.
+
+![image](screenshots/test.png)
+
+Before we have index, the search will scan full table, it will spend much more time.
+
+![image](screenshots/i1.png)
+
+After create index, the search changed to non-unique key look up, and search time is sharp drop.
+
+![image](screenshots/i2.png)
 
 ## Springboot Web/App Implementation
 
