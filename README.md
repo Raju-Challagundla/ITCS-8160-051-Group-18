@@ -110,14 +110,31 @@ CALL sum_total_by_restaurant(5, @sumtotal);
 
 SELECT ROUND(@sumtotal,2);
 </pre>
+**3) Display the max, min and average ratings for each feature when given a restaurant ID for all orders for that restaurant**
+<pre>
+Update with actual procedure
+</pre>
+**4) Display a count of the orders made by a customer for a specified date range when given a customer id**
+Let's write it as a stored procedure.
+<pre>
+Update with actual procedure
+</pre>
 ## Views and Functions
-**View
-	TBA
- 1) display total price of the orders by each customer (distinct) for a specified date range
+**View**
 
-**Function
-	TBA
-2) display a particular customer’s rating for a restaurant
+Describe about view
+1) Display total price of the orders by each customer (distinct) for a specified date range
+<pre>
+Update with actual View
+</pre>
+**Function**
+
+Describe about Function
+
+2) Display a particular customer’s rating for a restaurant
+<pre>
+Update with actual procedure
+</pre>
 
 
 ## Indexes and indexing: speed up search run time
@@ -197,7 +214,7 @@ TBA
 [vehicle table](screenshots/vehicle.png) |
 [users table for CRUD admin interface](screenshots/users.png)
  
-## PPT or Video
+## Summary PPT
 
-[Summary video](https://drive.google.com/file/d/1WFpg5wHiJIFeC-CWg3tntDvHGEhr9yeH/view)
+[Summary PPT](https://docs.google.com/presentation/d/1PkoQmjHqariVjEWBmVJjWyUFxWfx6AOzss4paKI14dE/view)
 
