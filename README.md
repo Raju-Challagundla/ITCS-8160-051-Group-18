@@ -110,6 +110,10 @@ CALL sum_total_by_restaurant(5, @sumtotal);
 
 SELECT ROUND(@sumtotal,2);
 </pre>
+## Functions and Views
+ TBA
+
+
 ## Indexes and indexing: speed up search run time
 An Index is a data structure that contains a copy some of the data from one or
 more existing database tables
