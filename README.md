@@ -201,18 +201,20 @@ TBA
 [Complete Database Dump](sql/CampusEatsDump_20211130.sql)
 
 #### Screenshots of Populated Database Tables:
-[ratings table](screenshots/ratings.png) |
-[order table](screenshots/order.png) |
-[delivery table](screenshots/delivery.png) |
-[driver table](screenshots/driver.png) |
-[faculty table](screenshots/faculty.png) |
-[location table](screenshots/location.png) |
-[person table](screenshots/person.png) |
-[restaurant table](screenshots/restaurant.png) |
-[staff table](screenshots/staff.png) |
-[student table](screenshots/student.png) |
-[vehicle table](screenshots/vehicle.png) |
-[users table for CRUD admin interface](screenshots/users.png)
+[ratings table](screenshots/11-Ratings.png) |
+[order table](screenshots/9-orders.png) |
+[delivery table](screenshots/4-Delivery.png) |
+[driver table](screenshots/5-Driver.png) |
+[faculty table](screenshots/6-faculty.png) |
+[location table](screenshots/8-location.png) |
+[person table](screenshots/1-Person.png) |
+[restaurant table](screenshots/12-Restaurants.png) |
+[staff table](screenshots/13-Staff.png) |
+[student table](screenshots/2-Student.png) |
+[vehicle table](screenshots/15-Vehicles.png) |
+[Order Items table](screenshots/10-ItemsByOrder.png)
+[Status table](screenshots/14-ItemsByOrder.png)
+
  
 ## Summary PPT
 
