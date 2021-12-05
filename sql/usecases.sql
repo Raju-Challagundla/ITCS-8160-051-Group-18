@@ -1,5 +1,8 @@
-DROP PROCEDURE IF EXISTS total_order_customer
+
+
 -- display a count of the orders made by a customer for a specified date range when given a customer id
+
+DROP PROCEDURE IF EXISTS total_order_customer
 
 -- Change statement delimiter from semicolon to double front slash
 DELIMITER //
