@@ -51,7 +51,7 @@ We study the data and food delivery service website/app to enhancing the databas
 ## Data Dictionary
 
 				
-![image](https://user-images.githubusercontent.com/89530932/139565106-7f70b71a-706b-4087-9be1-dc5ff38e4873.png)
+[Click here](docs/DataDictionary_Final.pdf)
 
 
 ## Stored procedures
