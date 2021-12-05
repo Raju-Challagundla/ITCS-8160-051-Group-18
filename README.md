@@ -111,6 +111,16 @@ CALL sum_total_by_restaurant(5, @sumtotal);
 SELECT ROUND(@sumtotal,2);
 </pre>
 ## Indexes and indexing: speed up search run time
+An Index is a data structure that contains a copy some of the data from one or
+more existing database tables
+An Example (conceptually) : An index at the back of the textbook.
+- A DB index provides an organizational framework that the DBMS can use to
+quickly locate the information that it needs.
+- The single most critical tool for improving database performance.
+
+Without an index, the DBMS has to perform a table scan inorder to perform a desired
+rows.Indexes are created on one or more columns in a table and can be created on most but not all columns and it depends on the column type. Ex: type : text , index cannot be created without employing additional mechanisms like hash algorithms, creating an index increases the amount of storage required by the database as it stores a copy of some of the data in the table.
+
 Because the primary key and foreign key already have index, we only need add index to the data which needs to search frequent and special, and not search by id.
 
 ![image](screenshots/test.png)
