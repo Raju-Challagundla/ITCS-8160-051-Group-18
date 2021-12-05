@@ -110,8 +110,14 @@ CALL sum_total_by_restaurant(5, @sumtotal);
 
 SELECT ROUND(@sumtotal,2);
 </pre>
-## Functions and Views
- TBA
+## Views and Functions
+**View
+	TBA
+ 1) display total price of the orders by each customer (distinct) for a specified date range
+
+**Function
+	TBA
+2) display a particular customer’s rating for a restaurant
 
 
 ## Indexes and indexing: speed up search run time
