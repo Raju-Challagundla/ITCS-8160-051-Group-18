@@ -223,18 +223,40 @@ select ROUND(@total_order,2);
 ## Views and Functions
 **View**
 
-Describe about view
+Views in SQL are kind of virtual tables. Like a table, a view consists of a set of named columns and rows of data. Unless indexed, a view does not exist as a stored set of data values in a database. The rows and columns of data come from tables referenced in the query defining the view and are produced dynamically when the view is referenced. A view is a SQL statement that is stored in the database with an associated name. 
+
+
 1) Display total price of the orders by each customer (distinct) for a specified date range
 <pre>
 Update with actual View
 </pre>
 **Function**
-
-Describe about Function
+Database users who retrieve updated records daily or repeatedly throughout the week/month use functions to simplify this task. Functions are SQL code that is saved to a file and accessed via a select statement. To execute the function, a user uses the select statement and specifies the parameters that the underlying SQL query then executes. Thereby, functions allow users to save time and increase efficiency by eliminating the need to re-write SQL code.
 
 2) Display a particular customer’s rating for a restaurant
 <pre>
-Update with actual procedure
+DELIMITER $$
+CREATE FUNCTION customer_rating_for_restaurant( cus_id INT, res_id INT)
+RETURNS FLOAT
+DETERMINISTIC
+BEGIN 
+	DECLARE avg_customer_rating_for_restaurant FLOAT;	
+	SELECT ROUND(avg_restaurant_rating, 2) INTO avg_customer_rating_for_restaurant
+	FROM  
+		(SELECT AVG(rating.restaurant_rating) AS avg_restaurant_rating, rating.order_id, ord.person_id, rating.restaurant_id
+		FROM  CampusEats_Fall_2021.rating AS rating
+		INNER JOIN CampusEats_Fall_2021.orders AS ord
+		ON rating.order_id = ord.order_id
+		where ord.person_id = cus_id AND rating.restaurant_id = res_id
+    -- where person_id=2
+		group by  order_id, rating.restaurant_id) as avg_rest_rating;
+	RETURN avg_customer_rating_for_restaurant;
+END $$
+DELIMITER ;
+
+SELECT  customer_rating_for_restaurant(2, 9) 
+
+
 </pre>
 
 
