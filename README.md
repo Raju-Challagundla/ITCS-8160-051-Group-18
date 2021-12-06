@@ -102,7 +102,7 @@ BEGIN
 	
 	SELECT SUM(total_price) INTO sumtotal
 	
-	FROM Campus_Eats_Fall2021.order ord where ord.restaurant_id = res_id;
+	FROM orders ord where ord.restaurant_id = res_id;
  
 END //
  
@@ -132,19 +132,19 @@ BEGIN
   SELECT MIN(restaurant_rating) 
   INTO min_rest_rating
   -- the result will be placed in this variable sum_balance_due_var
-  FROM  CampusEats_Fall_2021.rating
+  FROM  rating
   WHERE restaurant_id = res_id; 
   
   SELECT MAX(restaurant_rating) 
   INTO max_rest_rating
   -- the result will be placed in this variable sum_balance_due_var
-  FROM  CampusEats_Fall_2021.rating
+  FROM  rating
   WHERE restaurant_id = res_id; 
   
   SELECT AVG(restaurant_rating) 
   INTO avg_rest_rating
   -- the result will be placed in this variable sum_balance_due_var
-  FROM  CampusEats_Fall_2021.rating
+  FROM  rating
   WHERE restaurant_id = res_id; 
 
   -- Change statement delimiter from semicolon to double front slash
@@ -173,7 +173,7 @@ BEGIN
   SELECT COUNT(*)
   INTO total_order
   -- the result will be placed in this variable sum_balance_due_var
-  FROM  CampusEats_Fall_2021.orders
+  FROM  orders
   WHERE person_id = cus_id AND ordered_time BETWEEN timea AND timeb;
   -- Change statement delimiter from semicolon to double front slash
 END //
@@ -237,12 +237,11 @@ BEGIN
 	SELECT ROUND(avg_restaurant_rating, 2) INTO avg_customer_rating_for_restaurant
 	FROM  
 		(SELECT AVG(rating.restaurant_rating) AS avg_restaurant_rating, rating.order_id, ord.person_id, rating.restaurant_id
-		FROM  CampusEats_Fall_2021.rating AS rating
-		INNER JOIN CampusEats_Fall_2021.orders AS ord
+		FROM  rating AS rating
+		INNER JOIN orders AS ord
 		ON rating.order_id = ord.order_id
-		where ord.person_id = cus_id AND rating.restaurant_id = res_id
-    -- where person_id=2
-		group by  order_id, rating.restaurant_id) as avg_rest_rating;
+		WHERE ord.person_id = cus_id AND rating.restaurant_id = res_id
+		GROUP BY  order_id, rating.restaurant_id) as avg_rest_rating;
 	RETURN avg_customer_rating_for_restaurant;
 END $$
 DELIMITER ;
