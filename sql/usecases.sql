@@ -1,82 +1,44 @@
 -- display the max, min and average ratings for each feature when given a restaurant ID for all orders for that restaurant
-DROP PROCEDURE IF EXISTS max_restaurant_rating;
+DROP PROCEDURE IF EXISTS min_max_ave_restaurant_rating;
 
 -- Change statement delimiter from semicolon to double front slash
 DELIMITER //
-CREATE PROCEDURE max_restaurant_rating ( in res_id int, out max_rest_rating float)
+CREATE PROCEDURE min_max_avg_restaurant_rating ( in res_id int, out min_rest_rating float, out max_rest_rating float, out avg_rest_rating float)
 -- declare parameter within stored procedure
 -- (
 --  @l_id int , 
+--  @min_rest_rating float output
 --  @max_rest_rating float output
--- )
-BEGIN
-  -- DECLARE sum_number_order INT; -- declare variable to be used during execution of stored procedure
-
-  SELECT MAX(restaurant_rating)
-  INTO max_rest_rating
-  -- the result will be placed in this variable sum_balance_due_var
-  FROM  CampusEats_Fall_2021.rating
-  WHERE restaurant_id = res_id; 
-  -- Change statement delimiter from semicolon to double front slash
-END //
-DELIMITER ; 
-
-set @res_id=3;
-CALL max_restaurant_rating(@res_id, @max_rest_rating);
-select @max_rest_rating;
-
-DROP PROCEDURE IF EXISTS avg_restaurant_rating;
-
--- Change statement delimiter from semicolon to double front slash
-DELIMITER //
-CREATE PROCEDURE avg_restaurant_rating ( in res_id int, out avg_rest_rating float)
--- declare parameter within stored procedure
--- (
---  @l_id int , 
 --  @avg_rest_rating float output
 -- )
 BEGIN
   -- DECLARE sum_number_order INT; -- declare variable to be used during execution of stored procedure
 
-  SELECT AVG(restaurant_rating)
-  INTO avg_rest_rating
-  -- the result will be placed in this variable sum_balance_due_var
-  FROM  CampusEats_Fall_2021.rating
-  WHERE restaurant_id = res_id; 
-  -- Change statement delimiter from semicolon to double front slash
-END //
-DELIMITER ; 
-
-set @res_id=3;
-CALL avg_restaurant_rating(@res_id, @avg_rest_rating);
-select @avg_rest_rating;
-
-
-DROP PROCEDURE IF EXISTS min_restaurant_rating;
-
--- Change statement delimiter from semicolon to double front slash
-DELIMITER //
-CREATE PROCEDURE min_restaurant_rating ( in res_id int, out min_rest_rating float)
--- declare parameter within stored procedure
--- (
---  @l_id int , 
---  @avg_rest_rating float output
--- )
-BEGIN
-  -- DECLARE sum_number_order INT; -- declare variable to be used during execution of stored procedure
-
-  SELECT MIN(restaurant_rating)
+  SELECT MIN(restaurant_rating) 
   INTO min_rest_rating
   -- the result will be placed in this variable sum_balance_due_var
   FROM  CampusEats_Fall_2021.rating
   WHERE restaurant_id = res_id; 
+  
+  SELECT MAX(restaurant_rating) 
+  INTO max_rest_rating
+  -- the result will be placed in this variable sum_balance_due_var
+  FROM  CampusEats_Fall_2021.rating
+  WHERE restaurant_id = res_id; 
+  
+  SELECT AVG(restaurant_rating) 
+  INTO avg_rest_rating
+  -- the result will be placed in this variable sum_balance_due_var
+  FROM  CampusEats_Fall_2021.rating
+  WHERE restaurant_id = res_id; 
+
   -- Change statement delimiter from semicolon to double front slash
 END //
 DELIMITER ; 
 
 set @res_id=3;
-CALL min_restaurant_rating(@res_id, @min_rest_rating);
-select @min_rest_rating;
+CALL min_max_avg_restaurant_rating(@res_id, @min_rest_rating, @max_rest_rating, @avg_rest_rating);
+select Round(@min_rest_rating, 3), Round(@max_rest_rating, 3), Round(@avg_rest_rating, 3);
 
 
 -- display a count of the orders made by a customer for a specified date range when given a customer id
