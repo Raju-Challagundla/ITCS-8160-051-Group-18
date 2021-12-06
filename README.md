@@ -176,15 +176,15 @@ since from UI perspective, it is required to provide start and end date from use
 DROP PROCEDURE IF EXISTS total_order_price;
 DELIMITER $$
 CREATE PROCEDURE total_order_price(
-	IN  PID INT,
 	IN  StartDate DATETIME, 
 	IN  EndDate DATETIME
 )
 BEGIN
-	SELECT * FROM `total_spending_per_person` where person_id = PID AND ordered_time BETWEEN StartDate AND EndDate;
+	SELECT * FROM `total_spending_per_person` where ordered_time BETWEEN StartDate AND EndDate;
 END$$
 DELIMITER ;
-CALL total_order_price(1,'2021-01-01 09:30:00', '2022-01-01 01:30:00');
+CALL total_order_price('2021-01-01 09:30:00', '2022-01-01 01:30:00');
+
 
 </pre>
 
