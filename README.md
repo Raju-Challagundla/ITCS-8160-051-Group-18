@@ -173,14 +173,19 @@ SELECT ROUND(SUM(orders.total_price), 2) AS total_spending, person.person_id, or
 since from UI perspective, it is required to provide start and end date from user input so it is better to have a ***stored procedure*** for this view.
 
 <pre>
+DROP PROCEDURE IF EXISTS total_order_price;
 DELIMITER $$
-CREATE PROCEDURE GetResturnatRatings(
-	IN  RID INT
+CREATE PROCEDURE total_order_price(
+	IN  PID INT,
+	IN  StartDate DATETIME, 
+	IN  EndDate DATETIME
 )
 BEGIN
 	SELECT * FROM `total_spending_per_person` where person_id = PID AND ordered_time BETWEEN StartDate AND EndDate;
 END$$
 DELIMITER ;
+CALL total_order_price(1,'2021-01-01 09:30:00', '2022-01-01 01:30:00');
+
 </pre>
 
 **Function**
