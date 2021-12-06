@@ -64,7 +64,7 @@ DELIMITER ;
 SELECT  customer_rating_for_restaurant(2, 9) 
 
 -- views
--- Display the max, min and average ratings for each feature when given a restaurant ID for all orders for that restaurant.
+-- Display total price of the orders by each customer (distinct) for a specified date range
 
 CREATE VIEW total_spending_per_person AS 
 SELECT ROUND(SUM(orders.total_price), 2) AS total_spending, person.person_id, orders.ordered_time FROM `orders`, `person` WHERE orders.person_id = person.person_id GROUP BY (orders.person_id);
