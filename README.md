@@ -191,7 +191,7 @@ Views in SQL are kind of virtual tables. Like a table, a view consists of a set 
 
 1) Display total price of the orders by each customer (distinct) for a specified date range
 <pre>
-create view total_spending_per_person as SELECT round(sum(orders.total_price), 2) as total_spending, person.person_id, orders.ordered_time FROM `orders`, `person` where orders.person_id = person.person_id and orders.ordered_time between '2021-01-01' and '2022-12-31' GROUP by (orders.person_id);
+create view total_spending_per_person as SELECT round(sum(orders.total_price), 2) as total_spending, person.person_id, orders.ordered_time FROM `orders`, `person` where orders.person_id = person.person_id GROUP by (orders.person_id);
 </pre>
 
 since from UI perspective, it is required to provide start and end date from user input so it is better to have a ***stored procedure*** for this view.
