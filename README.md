@@ -112,7 +112,7 @@ SELECT ROUND(@sumtotal,2);
 </pre>
 **3) Display the max, min and average ratings for each feature when given a restaurant ID for all orders for that restaurant**
 <pre>
-DROP PROCEDURE IF EXISTS min_max_ave_restaurant_rating;
+DROP PROCEDURE IF EXISTS min_max_avg_restaurant_rating;
 
 -- Change statement delimiter from semicolon to double front slash
 DELIMITER //
