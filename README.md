@@ -193,21 +193,21 @@ Database users who retrieve updated records daily or repeatedly throughout the w
 
 2) Display a particular customer’s rating for a restaurant
 <pre>
+
+-- calculate a particular customer’s rating for a restaurant
 DELIMITER $$
 CREATE FUNCTION customer_rating_for_restaurant( cus_id INT, res_id INT)
 RETURNS FLOAT
 DETERMINISTIC
 BEGIN 
-	DECLARE avg_customer_rating_for_restaurant FLOAT;	
-	SELECT ROUND(avg_restaurant_rating, 2) INTO avg_customer_rating_for_restaurant
-	FROM  
-		(SELECT AVG(rating.restaurant_rating) AS avg_restaurant_rating, rating.order_id, ord.person_id, rating.restaurant_id
-		FROM  rating AS rating
-		INNER JOIN orders AS ord
+	DECLARE cus_rating_for_rest FLOAT;	
+	SELECT restaurant_rating  INTO cus_rating_for_rest
+		FROM (SELECT rating.restaurant_rating AS restaurant_rating, rating.order_id, ord.person_id, rating.restaurant_id
+		FROM  CampusEats_Fall_2021.rating AS rating
+		INNER JOIN CampusEats_Fall_2021.orders AS ord
 		ON rating.order_id = ord.order_id
-		WHERE ord.person_id = cus_id AND rating.restaurant_id = res_id
-		GROUP BY  order_id, rating.restaurant_id) as avg_rest_rating;
-	RETURN avg_customer_rating_for_restaurant;
+		WHERE ord.person_id = cus_id AND rating.restaurant_id =res_id)  as rest_rate;
+	RETURN cus_rating_for_rest;
 END $$
 DELIMITER ;
 
