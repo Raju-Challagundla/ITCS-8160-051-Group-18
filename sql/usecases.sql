@@ -5,23 +5,18 @@ CREATE PROCEDURE min_max_avg_restaurant_rating ( in res_id int, out min_rest_rat
 BEGIN
   SELECT MIN(restaurant_rating) 
   INTO min_rest_rating
-  -- the result will be placed in this variable sum_balance_due_var
   FROM  rating
   WHERE restaurant_id = res_id; 
   
   SELECT MAX(restaurant_rating) 
   INTO max_rest_rating
-  -- the result will be placed in this variable sum_balance_due_var
   FROM  rating
   WHERE restaurant_id = res_id; 
   
   SELECT AVG(restaurant_rating) 
   INTO avg_rest_rating
-  -- the result will be placed in this variable sum_balance_due_var
   FROM  rating
   WHERE restaurant_id = res_id; 
-
-  -- Change statement delimiter from semicolon to double front slash
 END //
 DELIMITER ; 
 
@@ -37,17 +32,14 @@ CREATE PROCEDURE total_order_customer ( in cus_id int, in timea VARCHAR(100), in
 BEGIN
   SELECT COUNT(*)
   INTO total_order
-  -- the result will be placed in this variable sum_balance_due_var
   FROM  orders
   WHERE person_id = cus_id AND ordered_time BETWEEN timea AND timeb;
-  -- Change statement delimiter from semicolon to double front slash
 END //
 DELIMITER ; 
 
 set @cus_id=2, @timea='2021-11-15 09:30:00', @timeb='2021-11-17 10:45:33';
 CALL total_order_customer(@cus_id, @timea, @timeb, @total_order);
 select @total_order;
-
 
 --3) calculate a particular customer’s average rating for a restaurant
 DROP FUNCTION IF EXISTS customer_rating_for_restaurant
