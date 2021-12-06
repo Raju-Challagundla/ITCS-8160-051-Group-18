@@ -41,27 +41,27 @@ set @cus_id=2, @timea='2021-11-15 09:30:00', @timeb='2021-11-17 10:45:33';
 CALL total_order_customer(@cus_id, @timea, @timeb, @total_order);
 select @total_order;
 
---3) calculate a particular customer’s average rating for a restaurant
-DROP FUNCTION IF EXISTS customer_rating_for_restaurant
+--3) calculate a particular customer’s rating for a restaurant
+-- calculate a particular customer’s rating for a restaurant
 DELIMITER $$
 CREATE FUNCTION customer_rating_for_restaurant( cus_id INT, res_id INT)
 RETURNS FLOAT
 DETERMINISTIC
 BEGIN 
-	DECLARE avg_customer_rating_for_restaurant FLOAT;	
-	SELECT ROUND(avg_restaurant_rating, 2) INTO avg_customer_rating_for_restaurant
-	FROM  
-		(SELECT AVG(rating.restaurant_rating) AS avg_restaurant_rating, rating.order_id, ord.person_id, rating.restaurant_id
+	DECLARE cus_rating_for_rest FLOAT;	
+	SELECT restaurant_rating  INTO cus_rating_for_rest
+		FROM (SELECT rating.restaurant_rating AS restaurant_rating, rating.order_id, ord.person_id, rating.restaurant_id
 		FROM  CampusEats_Fall_2021.rating AS rating
 		INNER JOIN CampusEats_Fall_2021.orders AS ord
 		ON rating.order_id = ord.order_id
-		WHERE ord.person_id = cus_id AND rating.restaurant_id = res_id
-		GROUP BY  order_id, rating.restaurant_id) AS avg_rest_rating;
-	RETURN avg_customer_rating_for_restaurant;
+		WHERE ord.person_id = cus_id AND rating.restaurant_id =res_id)  as rest_rate;
+	RETURN cus_rating_for_rest;
 END $$
 DELIMITER ;
 
 SELECT  customer_rating_for_restaurant(2, 9) 
+
+
 
 -- views
 -- Display total price of the orders by each customer (distinct) for a specified date range
