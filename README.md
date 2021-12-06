@@ -116,31 +116,24 @@ SELECT ROUND(@sumtotal,2);
 <pre>
 DROP PROCEDURE IF EXISTS min_max_avg_restaurant_rating;
 
--- Change statement delimiter from semicolon to double front slash
 DELIMITER //
 CREATE PROCEDURE min_max_avg_restaurant_rating ( in res_id int, out min_rest_rating float, out max_rest_rating float, out avg_rest_rating float)
 BEGIN
-  -- DECLARE sum_number_order INT; -- declare variable to be used during execution of stored procedure
-
   SELECT MIN(restaurant_rating) 
   INTO min_rest_rating
-  -- the result will be placed in this variable sum_balance_due_var
   FROM  rating
   WHERE restaurant_id = res_id; 
   
   SELECT MAX(restaurant_rating) 
   INTO max_rest_rating
-  -- the result will be placed in this variable sum_balance_due_var
   FROM  rating
   WHERE restaurant_id = res_id; 
   
   SELECT AVG(restaurant_rating) 
   INTO avg_rest_rating
-  -- the result will be placed in this variable sum_balance_due_var
   FROM  rating
   WHERE restaurant_id = res_id; 
 
-  -- Change statement delimiter from semicolon to double front slash
 END //
 DELIMITER ; 
 
@@ -151,17 +144,13 @@ select Round(@min_rest_rating, 3), Round(@max_rest_rating, 3), Round(@avg_rest_r
 **4) Display a count of the orders made by a customer for a specified date range when given a customer id**
 <pre>
 DROP PROCEDURE IF EXISTS total_order_customer
-
--- Change statement delimiter from semicolon to double front slash
 DELIMITER //
 CREATE PROCEDURE total_order_customer ( in cus_id int, in timea VARCHAR(100), in timeb VARCHAR(100), out total_order int)
 BEGIN
   SELECT COUNT(*)
   INTO total_order
-  -- the result will be placed in this variable sum_balance_due_var
   FROM  orders
   WHERE person_id = cus_id AND ordered_time BETWEEN timea AND timeb;
-  -- Change statement delimiter from semicolon to double front slash
 END //
 DELIMITER ; 
 
