@@ -190,8 +190,38 @@ Views in SQL are kind of virtual tables. Like a table, a view consists of a set 
 
 1) Display total price of the orders by each customer (distinct) for a specified date range
 <pre>
-Update with actual View
+create view total_spending_per_person as SELECT round(sum(orders.total_price), 2) as total_spending, person.person_id, orders.ordered_time FROM `orders`, `person` where orders.person_id = person.person_id and orders.ordered_time between '2021-01-01' and '2022-12-31' GROUP by (orders.person_id);
 </pre>
+
+since from UI perspective, it is required to provide start and end date from user input so it is better to have a ***stored procedure*** for this view.
+
+<pre>
+DELIMITER $$
+CREATE PROCEDURE GetResturnatRatings(
+	IN  RID INT
+)
+BEGIN
+	SELECT * FROM `total_spending_per_person` where person_id = PID and ordered_time between StartDate and EndDate;
+END$$
+DELIMITER ;
+</pre>
+
+2) display the max, min and average ratings for each feature when given a restaurant ID for all orders for that restaurant.
+
+<pre>
+create view resturant_ratings as select min(rating.restaurant_rating) as min_rating, max(rating.restaurant_rating) as max_rating, round(avg(rating.restaurant_rating), 2) as avg_rating, restaurant.restaurant_name, restaurant.restaurant_id from restaurant, rating where restaurant.restaurant_id = rating.restaurant_id group by (restaurant.restaurant_id);
+</pre>
+
+3) Persons who are approved can only be the drivers.
+<pre>
+create view approved_driver as select driver.date_hired, driver.license_number, rating.driver_rating, student.student_id, person.person_name from rating, student, person, driver where student.student_id = driver.student_id and person.person_id = student.student_id and driver.driver_id = rating.driver_id;
+</pre>
+
+4) who is going to deliver, where is it getting delivered,delivered or not, which vehicle driver is using, from which restaurant, items under the order
+<pre>
+create view required_table as select orders.order_id, orders.	total_price, driver.license_number, location.location_address, status.status_desc, vehicle.model, restaurant.restaurant_name, items.item, person.person_name from driver, orders, location, status, delivery, vehicle, restaurant, orders_items, items, person, student where orders.driver_id = driver.driver_id and orders.location_id = location.location_id and delivery.delivery_status = status.status_id and status.status_id = 4 and delivery.driver_id = driver.driver_id and delivery.vehicle_id = vehicle.vehicle_id and restaurant.restaurant_id = orders.restaurant_id and orders.order_id = orders_items.order_id and items.item_id = orders_items.item_id and student.person_id = person.person_id and driver.student_id = student.student_id;
+</pre>
+
 **Function**
 Database users who retrieve updated records daily or repeatedly throughout the week/month use functions to simplify this task. Functions are SQL code that is saved to a file and accessed via a select statement. To execute the function, a user uses the select statement and specifies the parameters that the underlying SQL query then executes. Thereby, functions allow users to save time and increase efficiency by eliminating the need to re-write SQL code.
 
