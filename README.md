@@ -119,13 +119,6 @@ DROP PROCEDURE IF EXISTS min_max_avg_restaurant_rating;
 -- Change statement delimiter from semicolon to double front slash
 DELIMITER //
 CREATE PROCEDURE min_max_avg_restaurant_rating ( in res_id int, out min_rest_rating float, out max_rest_rating float, out avg_rest_rating float)
--- declare parameter within stored procedure
--- (
---  @l_id int , 
---  @min_rest_rating float output
---  @max_rest_rating float output
---  @avg_rest_rating float output
--- )
 BEGIN
   -- DECLARE sum_number_order INT; -- declare variable to be used during execution of stored procedure
 
@@ -162,14 +155,7 @@ DROP PROCEDURE IF EXISTS total_order_customer
 -- Change statement delimiter from semicolon to double front slash
 DELIMITER //
 CREATE PROCEDURE total_order_customer ( in cus_id int, in timea VARCHAR(100), in timeb VARCHAR(100), out total_order int)
--- declare parameter within stored procedure
--- (
---  @cus_id int , 
---  @total_order int
--- )
 BEGIN
-  -- DECLARE sum_number_order INT; -- declare variable to be used during execution of stored procedure
-
   SELECT COUNT(*)
   INTO total_order
   -- the result will be placed in this variable sum_balance_due_var
