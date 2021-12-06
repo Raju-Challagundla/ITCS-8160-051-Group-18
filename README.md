@@ -58,6 +58,8 @@ We study the data and food delivery service website/app to enhancing the databas
 
 Database users who retrieve updated records daily or repeatedly throughout the week/month use stored procedures to simplify this task. Stored procedures are SQL code that is saved to a file and accessed via a call procedure. To execute the query, a user calls the procedure and specifies a parameter that the underlying SQL query then executes. Thereby, stored procedures allow users to save time and increase efficiency by eliminating the need to re-write SQL code.
 
+Below are few examples which illustrates the usage of stored procedures.
+
   
 **1) To get total orders delivered per driver.** 
 <pre>
