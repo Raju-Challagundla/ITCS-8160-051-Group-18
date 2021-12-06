@@ -82,7 +82,7 @@ END //
 
 DELIMITER ;
 
-CALL no_of_orders_delivered_by_driver(2,@total);
+CALL no_of_orders_delivered_by_driver(1,@total);
 
 SELECT @total;
 
@@ -156,7 +156,6 @@ CALL min_max_avg_restaurant_rating(@res_id, @min_rest_rating, @max_rest_rating, 
 select Round(@min_rest_rating, 3), Round(@max_rest_rating, 3), Round(@avg_rest_rating, 3);
 </pre>
 **4) Display a count of the orders made by a customer for a specified date range when given a customer id**
-Let's write it as a stored procedure.
 <pre>
 DROP PROCEDURE IF EXISTS total_order_customer
 
