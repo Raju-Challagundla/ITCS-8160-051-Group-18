@@ -324,7 +324,9 @@ Though the current The web administration interface supports most of the databas
 [Person table](screenshots/1-Person.png) | [Student table](screenshots/2-Students.png) | [Driver table](screenshots/5-Driver.png) | [Faculty table](screenshots/6-faculty.png) | [Ratings table](screenshots/11-Ratings.png) | [Orders table](screenshots/9-orders.png) | [Delivery table](screenshots/4-Delivery.png) | [Location table](screenshots/8-location.png) | [Restaurant table](screenshots/12-Restaurants.png) | [Staff table](screenshots/13-Staff.png) | [Vehicle table](screenshots/15-Vehicles.png) | [Order Items table](screenshots/10-ItemsByOrder.png) | [Status table](screenshots/14-Status.png)
 
  
-## Summary PPT
+## Summary PPTVideo
 
-[Summary PPT](https://docs.google.com/presentation/d/1PkoQmjHqariVjEWBmVJjWyUFxWfx6AOzss4paKI14dE/view)
+**Summary video explaining about this project can be found here :** [Summary video](https://drive.google.com/file/d/1h1D_0zzYd0Jc1XMjl3iwKwDTq4zjzii-/view)
 
+## Credits
+This project is prepared by mostly researching on the content available from the internet which includes github, mysql etc.
