@@ -161,7 +161,7 @@ select ROUND(@total_order,2);
 
 Database users who retrieve updated records daily or repeatedly throughout the week/month use functions to simplify this task. Functions are SQL code that is saved to a file and accessed via a select statement. To execute the function, a user uses the select statement and specifies the parameters that the underlying SQL query then executes. Thereby, functions allow users to save time and increase efficiency by eliminating the need to re-write SQL code.
 
-**1) Display a particular customer’s rating for a restaurant**
+**1) Display average of a particular customer’s rating for a restaurant**
 <pre>
 
 -- calculate average of a particular customer’s rating for a restaurant
