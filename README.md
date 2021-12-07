@@ -46,7 +46,7 @@ We study the data and food delivery service website/app to enhancing the databas
 ![image](docs/CampusEats_Architecture.png)
 
 ## EERD
-![image](docs/Final_EERD.png)
+![image](docs/EERD_Final.png)
 
 ## Data Dictionary
 
