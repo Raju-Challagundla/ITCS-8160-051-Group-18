@@ -114,26 +114,24 @@ SELECT ROUND(@sumtotal,2);
 </pre>
 **3) Display the max, min and average ratings for each feature when given a restaurant ID for all orders for that restaurant**
 <pre>
-DROP PROCEDURE IF EXISTS min_max_avg_restaurant_rating;
-
+DROP PROCEDURE IF EXISTS min_max_ave_restaurant_rating;
 DELIMITER //
 CREATE PROCEDURE min_max_avg_restaurant_rating ( in res_id int, out min_rest_rating float, out max_rest_rating float, out avg_rest_rating float)
 BEGIN
   SELECT MIN(restaurant_rating) 
   INTO min_rest_rating
-  FROM  rating
+  FROM  rating,orders
   WHERE restaurant_id = res_id; 
   
   SELECT MAX(restaurant_rating) 
   INTO max_rest_rating
-  FROM  rating
+  FROM  rating,orders
   WHERE restaurant_id = res_id; 
   
   SELECT AVG(restaurant_rating) 
   INTO avg_rest_rating
-  FROM  rating
+  FROM  rating,orders
   WHERE restaurant_id = res_id; 
-
 END //
 DELIMITER ; 
 
