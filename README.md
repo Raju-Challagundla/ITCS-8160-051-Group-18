@@ -50,8 +50,21 @@ We study the data and food delivery service website/app to enhancing the databas
 
 ## Data Dictionary
 
-				
-[Click here](docs/DataDictionary_Final.pdf)
+Below are the new columns added into the existing tables to support end to end food delivery system.
+
+| Table : Orders 	| Type |				
+| ------------- | ------------- |
+| ordered_time 	|  DATETIME	|
+| order_status  |  FK_Status_table  	|
+
+| Table : Delivery 	| Type 	|
+| ------------- | ------------- |
+| pickedup_time 	|  DATETIME	|
+| delivery_status  	|  FK_Status_table  	|
+
+
+
+**[Click here for complete Data Dictionary](docs/DataDictionary_Final.pdf)**
 
 
 ## Stored procedures
