@@ -164,7 +164,7 @@ Database users who retrieve updated records daily or repeatedly throughout the w
 **1) Display a particular customer’s rating for a restaurant**
 <pre>
 
--- calculate a particular customer’s rating for a restaurant
+-- calculate average of a particular customer’s rating for a restaurant
 DELIMITER $$
 CREATE FUNCTION customer_rating_for_restaurant( cus_id INT, res_id INT)
 RETURNS FLOAT
