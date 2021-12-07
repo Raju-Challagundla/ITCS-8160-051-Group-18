@@ -318,7 +318,7 @@ Though the current The web administration interface supports most of the databas
 
 ## MySQL Database Dump
 
-[Complete Database Dump](sql/CampusEatsDump_20211130.sql)
+[Complete Database Dump](sql/CampusEats_Dump20211207.sql)
 
 #### Screenshots of Populated Database Tables:
 [Person table](screenshots/1-Person.png) | [Student table](screenshots/2-Students.png) | [Driver table](screenshots/5-Driver.png) | [Faculty table](screenshots/6-faculty.png) | [Ratings table](screenshots/11-Ratings.png) | [Orders table](screenshots/9-orders.png) | [Delivery table](screenshots/4-Delivery.png) | [Location table](screenshots/8-location.png) | [Restaurant table](screenshots/12-Restaurants.png) | [Staff table](screenshots/13-Staff.png) | [Vehicle table](screenshots/15-Vehicles.png) | [Order Items table](screenshots/10-ItemsByOrder.png) | [Status table](screenshots/14-Status.png)
