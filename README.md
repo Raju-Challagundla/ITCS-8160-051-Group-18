@@ -159,39 +159,11 @@ CALL total_order_customer(@cus_id, @timea, @timeb, @total_order);
 select ROUND(@total_order,2);
 </pre>
 ## Views and Functions
-**View**
-
-Views in SQL are kind of virtual tables. Like a table, a view consists of a set of named columns and rows of data. Unless indexed, a view does not exist as a stored set of data values in a database. The rows and columns of data come from tables referenced in the query defining the view and are produced dynamically when the view is referenced. A view is a SQL statement that is stored in the database with an associated name. 
-
-
-1) Display total price of the orders by each customer (distinct) for a specified date range
-<pre>
-CREATE VIEW total_spending_per_person AS 
-SELECT ROUND(SUM(orders.total_price), 2) AS total_spending, person.person_id, orders.ordered_time FROM `orders`, `person` WHERE orders.person_id = person.person_id GROUP BY (orders.person_id);
-</pre>
-
-since from UI perspective, it is required to provide start and end date from user input so it is better to have a ***stored procedure*** for this view.
-
-<pre>
-DROP PROCEDURE IF EXISTS total_order_price;
-DELIMITER $$
-CREATE PROCEDURE total_order_price(
-	IN  StartDate DATETIME, 
-	IN  EndDate DATETIME
-)
-BEGIN
-	SELECT * FROM `total_spending_per_person` where ordered_time BETWEEN StartDate AND EndDate;
-END$$
-DELIMITER ;
-CALL total_order_price('2021-01-01 09:30:00', '2022-01-01 01:30:00');
-
-
-</pre>
-
 **Function**
+
 Database users who retrieve updated records daily or repeatedly throughout the week/month use functions to simplify this task. Functions are SQL code that is saved to a file and accessed via a select statement. To execute the function, a user uses the select statement and specifies the parameters that the underlying SQL query then executes. Thereby, functions allow users to save time and increase efficiency by eliminating the need to re-write SQL code.
 
-2) Display a particular customer’s rating for a restaurant
+**1) Display a particular customer’s rating for a restaurant**
 <pre>
 
 -- calculate a particular customer’s rating for a restaurant
@@ -215,6 +187,47 @@ SELECT  customer_rating_for_restaurant(2, 9)
 
 
 </pre>
+
+**View**
+
+Views in SQL are kind of virtual tables. Like a table, a view consists of a set of named columns and rows of data. Unless indexed, a view does not exist as a stored set of data values in a database. The rows and columns of data come from tables referenced in the query defining the view and are produced dynamically when the view is referenced. A view is a SQL statement that is stored in the database with an associated name. 
+
+
+**2) Display total price of the orders by each customer (distinct) for a specified date range**
+<pre>
+CREATE FUNCTION startDate() RETURNS DATETIME DETERMINISTIC NO SQL RETURN @startDate;
+CREATE FUNCTION endDate() RETURNS DATETIME DETERMINISTIC NO SQL RETURN @endDate;
+
+
+CREATE VIEW total_spending_per_person AS 
+SELECT 
+	person.person_id,
+    ROUND(SUM(orders.total_price), 2) AS total_spending 
+FROM
+    `orders`,
+    `person`
+WHERE
+    orders.person_id = person.person_id 
+    AND ordered_time BETWEEN startDate() AND endDate() 
+GROUP BY orders.person_id
+ORDER BY orders.person_id;
+
+SELECT 
+    tsp.*
+FROM
+    (SELECT @startDate:='2021-01-01 09:30:00' sd) AS sdt,
+    (SELECT @endDate:='2022-11-16 01:30:00' ed) AS edt,
+    total_spending_per_person tsp;
+</pre>
+
+since from UI perspective, it is required to provide start and end date from user input so it is better to have a ***stored procedure*** for this view.
+
+<pre>
+
+
+</pre>
+
+
 
 
 ## Indexes and indexing: speed up search run time
