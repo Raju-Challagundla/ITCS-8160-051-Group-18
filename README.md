@@ -326,7 +326,7 @@ Though the current The web administration interface supports most of the databas
  
 ## Summary PPTVideo
 
-**Summary video explaining about this project can be found here :** [Summary video](https://drive.google.com/file/d/1h1D_0zzYd0Jc1XMjl3iwKwDTq4zjzii-/view)
+**Summary video explaining about this project can be found here :** [Summary video](https://drive.google.com/file/d/14eLQrDISkkGHtlq2mJV31QzU5EmRHaU-/view)
 
 ## Credits
 This project is prepared by mostly researching on the content available from the internet which includes github, mysql etc.
