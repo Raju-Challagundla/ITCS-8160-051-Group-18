@@ -5,17 +5,17 @@ CREATE PROCEDURE min_max_avg_restaurant_rating ( in res_id int, out min_rest_rat
 BEGIN
   SELECT MIN(restaurant_rating) 
   INTO min_rest_rating
-  FROM  rating
+  FROM  rating,orders
   WHERE restaurant_id = res_id; 
   
   SELECT MAX(restaurant_rating) 
   INTO max_rest_rating
-  FROM  rating
+  FROM  rating,orders
   WHERE restaurant_id = res_id; 
   
   SELECT AVG(restaurant_rating) 
   INTO avg_rest_rating
-  FROM  rating
+  FROM  rating,orders
   WHERE restaurant_id = res_id; 
 END //
 DELIMITER ; 
@@ -41,44 +41,37 @@ set @cus_id=2, @timea='2021-11-15 09:30:00', @timeb='2021-11-17 10:45:33';
 CALL total_order_customer(@cus_id, @timea, @timeb, @total_order);
 select @total_order;
 
---3) calculate a particular customer’s rating for a restaurant
--- calculate a particular customer’s rating for a restaurant
-DELIMITER $$
-CREATE FUNCTION customer_rating_for_restaurant( cus_id INT, res_id INT)
-RETURNS FLOAT
-DETERMINISTIC
-BEGIN 
-	DECLARE cus_rating_for_rest FLOAT;	
-	SELECT restaurant_rating  INTO cus_rating_for_rest
-		FROM (SELECT rating.restaurant_rating AS restaurant_rating, rating.order_id, ord.person_id, rating.restaurant_id
-		FROM  CampusEats_Fall_2021.rating AS rating
-		INNER JOIN CampusEats_Fall_2021.orders AS ord
-		ON rating.order_id = ord.order_id
-		WHERE ord.person_id = cus_id AND rating.restaurant_id =res_id)  as rest_rate;
-	RETURN cus_rating_for_rest;
-END $$
-DELIMITER ;
-
-SELECT  customer_rating_for_restaurant(2, 9) 
+-- 3) calculate a particular customer’s rating for a restaurant
+SELECT rating.restaurant_rating AS restaurant_rating,ord.person_id, ord.restaurant_id,rating.order_id
+FROM rating AS rating
+INNER JOIN orders AS ord
+ON rating.order_id = ord.order_id
+WHERE ord.person_id = 2 AND ord.restaurant_id = 7 AND rating.restaurant_rating is not null
 
 
 
--- views
--- Display total price of the orders by each customer (distinct) for a specified date range
+-- 4) Display total price of the orders by each customer (distinct) for a specified date range
+-- Below are the functions which accepts startDate and endDate as input variables for the view
+CREATE FUNCTION startDate() RETURNS DATETIME DETERMINISTIC NO SQL RETURN @startDate;
+CREATE FUNCTION endDate() RETURNS DATETIME DETERMINISTIC NO SQL RETURN @endDate;
+
 
 CREATE VIEW total_spending_per_person AS 
-SELECT ROUND(SUM(orders.total_price), 2) AS total_spending, person.person_id, orders.ordered_time FROM `orders`, `person` WHERE orders.person_id = person.person_id GROUP BY (orders.person_id);
+SELECT 
+	person.person_id,
+    ROUND(SUM(orders.total_price), 2) AS total_spending 
+FROM
+    `orders`,
+    `person`
+WHERE
+    orders.person_id = person.person_id 
+    AND ordered_time BETWEEN startDate() AND endDate() 
+GROUP BY orders.person_id
+ORDER BY orders.person_id;
 
-DROP PROCEDURE IF EXISTS total_order_price;
-DELIMITER $$
-CREATE PROCEDURE total_order_price(
-	IN  StartDate DATETIME, 
-	IN  EndDate DATETIME
-)
-BEGIN
-	SELECT * FROM `total_spending_per_person` where ordered_time BETWEEN StartDate AND EndDate;
-END$$
-DELIMITER ;
-CALL total_order_price('2021-01-01 09:30:00', '2022-01-01 01:30:00');
-
-
+SELECT 
+    tsp.*
+FROM
+    (SELECT @startDate:='2021-01-01 09:30:00' sd) AS sdt,
+    (SELECT @endDate:='2022-11-16 01:30:00' ed) AS edt,
+    total_spending_per_person tsp;
