@@ -173,18 +173,17 @@ BEGIN
 	DECLARE avg_customer_rating_for_restaurant FLOAT;	
 	SELECT ROUND(avg_restaurant_rating, 2) INTO avg_customer_rating_for_restaurant
 	FROM  
-		(SELECT AVG(rating.restaurant_rating) AS avg_restaurant_rating, rating.order_id, ord.person_id, rating.restaurant_id
-		FROM  rating AS rating
-		INNER orders AS ord
-		ON rating.order_id = ord.order_id
-		where ord.person_id = cus_id AND rating.restaurant_id = res_id
-    -- where person_id=2
-		group by  order_id, rating.restaurant_id) as avg_rest_rating;
+		(SELECT ord.restaurant_id, AVG(rating.restaurant_rating) AS avg_restaurant_rating
+			FROM  rating AS rating
+			INNER JOIN orders AS ord
+			ON rating.order_id = ord.order_id
+			WHERE ord.person_id = cus_id AND ord.restaurant_id = res_id
+			GROUP BY  ord.restaurant_id) as avg_rest_rating;
 	RETURN avg_customer_rating_for_restaurant;
 END $$
 DELIMITER ;
 
-SELECT  customer_rating_for_restaurant(2, 9) 
+SELECT  customer_rating_for_restaurant(2, 7) 
 
 
 </pre>
