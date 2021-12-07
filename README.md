@@ -218,11 +218,25 @@ FROM
     total_spending_per_person tsp;
 </pre>
 
-since from UI perspective, it is required to provide start and end date from user input so it is better to have a ***stored procedure*** for this view.
+Views in MySQL are nothing more than saved SQL queries. Views provide an abstraction layer to underlying data, simplifying data access. However there are certain limitations for MySQL views. These limitations include:
+
+- You cannot pass parameters to MySQL views
+
+so in the above case we have created two functions which acts as variables as the functions can be invoked functions 
 
 <pre>
+CREATE FUNCTION startDate() RETURNS DATETIME DETERMINISTIC NO SQL RETURN @startDate;
+CREATE FUNCTION endDate() RETURNS DATETIME DETERMINISTIC NO SQL RETURN @endDate;
 
+the view can be called with function parameters as  below
 
+SELECT 
+    tsp.*
+FROM
+    (SELECT @startDate:='2021-01-01 09:30:00' sd) AS sdt,
+    (SELECT @endDate:='2022-11-16 01:30:00' ed) AS edt,
+    total_spending_per_person tsp;
+    
 </pre>
 
 
