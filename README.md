@@ -134,17 +134,17 @@ BEGIN
   SELECT MIN(restaurant_rating) 
   INTO min_rest_rating
   FROM  rating,orders
-  WHERE restaurant_id = res_id; 
+  WHERE restaurant_id = res_id AND rating.order_id= orders.order_id; 
   
   SELECT MAX(restaurant_rating) 
   INTO max_rest_rating
   FROM  rating,orders
-  WHERE restaurant_id = res_id; 
+  WHERE restaurant_id = res_id AND rating.order_id= orders.order_id; 
   
   SELECT AVG(restaurant_rating) 
   INTO avg_rest_rating
   FROM  rating,orders
-  WHERE restaurant_id = res_id; 
+  WHERE restaurant_id = res_id AND rating.order_id= orders.order_id; 
 END //
 DELIMITER ; 
 
